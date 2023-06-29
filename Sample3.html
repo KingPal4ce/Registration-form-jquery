@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- jQuery library -->
+        <!-- <script src="js/jquery-3.6.4.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+        <!-- Popper JS -->
+        <!-- <script src="js/popper.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        //$().(function(){});
+        $(document).ready(function () {
+            $("#sub").click(function () {
+                if ($("#uname").val() == "" || /\s/g.test($("#uname").val())) {
+                    $("#uname").css("border-color", "red");
+                    $("#uname_msg").html("Username required");
+                    if (/\s/g.test($("#uname").val())) {
+                        $("#uname_msg").html("Spaces not allowed in Username");
+                    }
+                }
+
+                if ($("#upass").val().length < 8 || /\s/g.test($("#unpass").val())) {
+                    $("#upass").css("border-color", "red");
+                    $("#upass_msg").html("Minimum of 8 Characters");
+                }
+
+                if ($("#upass").val() == "" || /\s/g.test($("#upass").val())) {
+                    $("#upass").css("border-color", "red");
+                    if ($("#upass").val() == "") {
+                        $("#upass_msg").html("Password required");
+                    }
+                    if (/\s/g.test($("#upass").val())) {
+                        $("#upass_msg").html("Spaces not allowed in Password");
+                    }
+                }
+
+                if ($("#cpass").val().length < 8 || /\s/g.test($("#cpass").val())) {
+                    $("#cpass").css("border-color", "red");
+                    $("#cpass_msg").html("Minimum of 8 Characters");
+                }
+
+                if ($("#upass").val() != $("#cpass").val()) {
+                    $("#upass").css("border-color", "red");
+                    $("#cpass").css("border-color", "red");
+                    $("#cpass_msg").html("Passwords do not match");
+                }
+
+                if ($("#fname").val() == "") {
+                    $("#fname").css("border-color", "red");
+                    $("#fname_msg").html("First Name required");
+                }
+
+                if ($("#lname").val() == "") {
+                    $("#lname").css("border-color", "red");
+                    $("#lname_msg").html("Last Name required");
+                }
+
+                if ($("#email").val() == "") {
+                    $("#email").css("border-color", "red");
+                    $("#email_msg").html("Email address required");
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("#email").val())) {
+                    $("#email").css("border-color", "red");
+                    $("#email_msg").html("Invalid email address format");
+                } else {
+                    $("#email").css("border-color", "");
+                    $("#email_msg").html("");
+                }
+
+            });
+        }
+        );
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+        * {
+            font-family: poppins;
+        }
+
+        body {
+            background-color: #F2f2f2;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2% 3%;
+        }
+
+        nav h1 {
+            color: #000;;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style-type: none;
+
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #000;;
+            margin: 0 14px;
+        }
+
+        #form1 {
+            box-shadow: 0px 0px 10px rgba(0.5, 0, 0, 0.5);
+            background-color: #fff;
+            padding: 3%;
+            margin: 2%;
+        }
+
+        form input[type=text] {
+            padding: 2%;
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        form input[type=password] {
+            padding: 2%;
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        form input[type=email] {
+            padding: 2%;
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        form input[type=submit] {
+            padding: 2%;
+            width: 100px;
+            border-radius: 30px;
+        }
+
+
+        footer {
+            align-items: center;
+            padding: 1% 3%;
+        }
+
+        .footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-container small {
+            color: #000;
+        }
+
+        .socialmedia {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .socialmedia i {
+            font-size: 20px;
+            margin: 20px;
+            color: #000;
+        }
+
+        #uname_msg,
+        #upass_msg,
+        #cpass_msg,
+        #fname_msg,
+        #lname_msg,
+        #email_msg {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" id="hdr">
+                <Nav>
+                    <h1>Registration</h1>
+                    <div class="nav-links">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </Nav>
+            </div>
+            <hr style="width:95%; height: 3px; margin: auto; background-color: grey; border-radius: 7px;">
+        </div>
+        <div class="row">
+
+            <div class="col-lg-4" id="SBar">
+            </div>
+
+            <div class="col-lg-4" id="form1">
+                <form name="frm_register" id="frm_register" onsubmit="return false">
+
+                    <div>
+                        <label for="uname">Username:</label>
+                        <br>
+                        <input type="text" name="uname" id="uname" placeholder="Please enter Username">
+                    </div>
+
+                    <div>
+                        <p id="uname_msg" name="uname_msg"></p>
+                    </div>
+
+                    <div>
+                        <label for="upass">Password:</label>
+                        <br>
+                        <input type="password" name="upass" id="upass" placeholder="Please enter Password">
+                    </div>
+
+                    <div>
+                        <p id="upass_msg" name="upass_msg"></p>
+                    </div>
+
+                    <div>
+                        <label for="cpass">Confirm Password:</label>
+                        <br>
+                        <input type="password" id="cpass" name="cpass" placeholder="Re-enter Password">
+                    </div>
+                    <div>
+                        <p id="cpass_msg" name="cpass_msg"></p>
+                    </div>
+
+                    <div>
+                        <label for="fname">Firstname:</label>
+                        <br>
+                        <input type="text" name="fname" id="fname" placeholder="Please enter firstname">
+                    </div>
+
+                    <div>
+                        <p id="fname_msg" name="fname_msg"></p>
+                    </div>
+
+                    <div>
+                        <label for="lname">Lastname:</label>
+                        <br>
+                        <input type="text" name="lname" id="lname" placeholder="Please enter lastname">
+                    </div>
+
+                    <div>
+                        <p id="lname_msg" name="lname_msg"></p>
+                    </div>
+
+                    <div>
+                        <label>Gender:</label>
+                        <br>
+                        <label for="male">Male</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="female">Female</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                    </div>
+
+
+                    <div>
+                        <label for="email">Email:</label>
+                        <br>
+                        <input type="email" id="email" name="email" placeholder="Please enter Email">
+                    </div>
+                    <div>
+                        <p id="email_msg" name="email_msg"></p>
+                    </div>
+
+                    <div>
+                        <input type="submit" name="sub" id="sub" value="Register">
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-lg-4" id="SBar">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12" id="ftr">
+                <hr style="width:95%; height: 3px; margin: auto; background-color: grey; border-radius: 7px;">
+                <footer>
+                    <div class="footer-container">
+                        <small>© 2023. Ricketson Palacio all rights reserved</small>
+                        <div class="socialmedia">
+                            <a href="https://www.facebook.com/ricketson.palacio"><i
+                                    class="fa-brands fa-facebook"></i></a>
+                            <a href="https://twitter.com/Ricketsonpalace"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="https://github.com/KingPal4ce"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/ricketson-palacio-b33a87222/"><i
+                                    class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
